@@ -12,11 +12,16 @@ import vipLendario from "../assets/vipLendario.jpg";
 import vipChefe from "../assets/vipChefe.jpg";
 
 // imagens carros
-import carR1 from "../assets/r1.jpg";
-import carElegy from "../assets/ageraRS.png";
-import carInfernus from "../assets/lambo1.png";
-import carFeltzer from "../assets/R34.png";
-import carBanshee from "../assets/cyber.png";
+import r1200gs from "../assets/r1200gs.png";
+import saveiro from "../assets/saveiroG9ex2.png";
+import r34 from "../assets/R34BLUEDRAGON.png";
+import m3g80 from "../assets/m3g80.png";
+import drift from "../assets/GODzDRIFTCAT.png";
+import ram from "../assets/GODzRAMTRX6x6.png";
+import eclipse from "../assets/GODz95GSX.png";
+import m2 from "../assets/DLM2.png";
+import demonhawkk from "../assets/demonhawkk.png";
+import ferrarigtb from "../assets/ferrarigtb.png";
 
 // outros
 import casaPraia from "../assets/casaPraia.jpg";
@@ -42,11 +47,16 @@ export function Home() {
     ]);
 
     setCars([
-      { id: 1, name: "R1", description: "Moto esportiva", price: 30, image: carR1 },
-      { id: 2, name: "ageraRS", description: "Esportivo clássico", price: 70, image: carElegy },
-      { id: 3, name: "Lamborghini", description: "Velocidade e estilo", price: 40, image: carInfernus },
-      { id: 4, name: "R34", description: "Velocidade pura", price: 90, image: carFeltzer },
-      { id: 5, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: carBanshee },
+      { id: 1, name: "R1", description: "Moto esportiva", price: 30, image: r1200gs },
+      { id: 2, name: "ageraRS", description: "Esportivo clássico", price: 70, image: ferrarigtb },
+      { id: 3, name: "Lamborghini", description: "Velocidade e estilo", price: 40, image: saveiro },
+      { id: 4, name: "R34", description: "Velocidade pura", price: 90, image: r34 },
+      { id: 5, name: "Cyberrrrrr", description: "Carro do Elon Musk", price: 60, image: m3g80 },
+      { id: 6, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: ram },
+      { id: 7, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: drift },
+      { id: 8, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: eclipse },
+      { id: 9, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: m2 },
+      { id: 10, name: "Cyber", description: "Carro do Elon Musk", price: 60, image: demonhawkk },
     ]);
 
     setOthers([
@@ -55,7 +65,6 @@ export function Home() {
     ]);
   }, []);
 
-  // bloqueio de scroll quando modal ou checkout abertos
   useEffect(() => {
     const hide = Boolean(detailItem || checkoutItem || paymentSuccess);
     document.body.style.overflow = hide ? "hidden" : "auto";
@@ -116,12 +125,21 @@ export function Home() {
         {/* Abas */}
         <div className="flex justify-center gap-4 mb-12">
           {["vips", "cars", "others"].map((tab) => {
-            const colors = { vips: "red", cars: "blue", others: "green" };
+            
+            let activeClasses = "";
+            if (tab === "vips") {
+              activeClasses = "bg-red-700 text-white shadow-[0_0_20px_rgba(255,0,0,0.7)]"; // Fundo VERMELHO sólido e sombra vermelha
+            } else if (tab === "cars") {
+              activeClasses = "bg-blue-700 text-white shadow-[0_0_20px_rgba(0,0,255,0.7)]"; // Fundo AZUL sólido e sombra azul
+            } else {
+              activeClasses = "bg-green-700 text-white shadow-[0_0_20px_rgba(0,255,0,0.7)]"; // Fundo VERDE sólido e sombra verde
+            }
+
             return (
               <button
                 key={tab}
                 className={`px-6 py-2 rounded-full font-bold transition ${
-                  activeTab === tab ? `bg-${colors[tab]}-700 text-white shadow-[0_0_20px_rgba(255,0,0,0.7)]` : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  activeTab === tab ? activeClasses : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
                 onClick={() => setActiveTab(tab)}
               >
